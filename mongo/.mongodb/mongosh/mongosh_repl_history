@@ -1,0 +1,4 @@
+db.users.find()
+db.users.find(
+db.user
+show dbs

@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+  backend:
+    container_name: new-container
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "127.0.0.1:4000:4000"
+    depends_on:
+      - mongo
+  frontend:
+    container_name: frontend-container
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "127.0.0.1:3000:3000"
+  mongo:
+    container_name: mongo
+    restart: always
+    image: mongo:latest
+    volumes:
+      - ./mongo:/data/db
+    expose:
+      - 27017
+    command: --bind_ip_all --replSet rs0
+
+
+  

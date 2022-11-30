@@ -1,0 +1,4 @@
+mongo
+mongo
+mongo
+mongosh
