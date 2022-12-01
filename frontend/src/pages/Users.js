@@ -8,7 +8,7 @@ const Users = () => {
     
     useEffect(()=>{
         const fetchUsers = async () => {
-            const response = await fetch('/user/all', {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/all`, {
                 headers: {'Authorization': `Bearer ${user.token}`},
               })
             const json =  await response.json()

@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { App } = require('@slack/bolt')
 const cron = require('node-cron');
 const User = require('./models/userModel')
@@ -5,7 +6,8 @@ const userroutes =  require ('./routes/users')
 const express = require ('express')
 const mongoose = require ('mongoose')
 const http = require('http');
-require('dotenv').config()
+var cors = require('cors')
+
 const { createMessageAdapter } = require('@slack/interactive-messages');
 const slackInteractions = createMessageAdapter(process.env.SLACK_SIGNING_SECRET);
 
@@ -17,6 +19,7 @@ const slackapp = new App({
   });
 
 // Middlewares
+expressapp.use(cors())
 expressapp.use(express.json())
 expressapp.use((req, res, next)=>{
     console.log(req.path, req.method)

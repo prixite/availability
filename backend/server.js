@@ -1,8 +1,9 @@
+require('dotenv').config()
 const { App } = require('@slack/bolt')
 const cron = require('node-cron');
 const User = require('./models/userModel')
-require('dotenv').config()
 
+var cors = require('cors')
 const express = require ('express')
 const mongoose = require ('mongoose')
 const userroutes =  require ('./routes/users')
@@ -17,6 +18,7 @@ const app2 = new App({
   
 
 // middleware which will run before sending response
+app.use(cors())
 app.use(express.json())
 app.use((req, res, next)=>{
     console.log(req.path, req.method)

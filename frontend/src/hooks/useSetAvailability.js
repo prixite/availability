@@ -11,7 +11,7 @@ export const useSetAvailability = () => {
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('/user/', {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/`, {
       method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ user_id, startTime, endTime})

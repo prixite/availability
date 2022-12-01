@@ -1,4 +1,0 @@
-mongo
-mongo
-mongo
-mongosh
