@@ -22,7 +22,12 @@ const slackapp = new App({
 // Middlewares
 expressapp.use(cors())
 
-expressapp.use(express.static(path.join(__dirname, "static")));
+if(process.env.NODE_ENV === 'production'){
+  expressapp.use(express.static(path.join(__dirname, "static")));
+  expressapp.use((req, res, next) => {
+    res.sendFile(path.join(__dirname, "static", "index.html"));
+  });  
+}
 
 
 expressapp.use(express.json())
@@ -33,9 +38,6 @@ expressapp.use((req, res, next)=>{
 })
 expressapp.use('/user',userroutes)
 expressapp.use('/slack/actions', slackInteractions.expressMiddleware());
-expressapp.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, "static", "index.html"));
-});
 
 // Functions for sending messages, generating random number, finding differnece between message send and response time in minutes
 const requestTime = new Date();
