@@ -6,7 +6,8 @@ const userroutes =  require ('./routes/users')
 const express = require ('express')
 const mongoose = require ('mongoose')
 const http = require('http');
-var cors = require('cors')
+const cors = require('cors');
+const path = require('path');
 
 const { createMessageAdapter } = require('@slack/interactive-messages');
 const slackInteractions = createMessageAdapter(process.env.SLACK_SIGNING_SECRET);
@@ -20,16 +21,21 @@ const slackapp = new App({
 
 // Middlewares
 expressapp.use(cors())
+
+expressapp.use(express.static(path.join(__dirname, "static")));
+
+
 expressapp.use(express.json())
+
 expressapp.use((req, res, next)=>{
     console.log(req.path, req.method)
     next()
 })
 expressapp.use('/user',userroutes)
 expressapp.use('/slack/actions', slackInteractions.expressMiddleware());
-expressapp.get('/', (req, res)=>{
-    res.json({msg: 'Homepage'})
-})
+expressapp.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "static", "index.html"));
+});
 
 // Functions for sending messages, generating random number, finding differnece between message send and response time in minutes
 const requestTime = new Date();
