@@ -7,37 +7,36 @@ import Users from './pages/Users'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 
-function App() {
-
+function App () {
   const { user } = useAuthContext()
 
   return (
-    <div className="App">
+    <div className='App'>
       <BrowserRouter>
-        <div className="pages">
-        <Navbar />
+        <div className='pages'>
+          <Navbar />
           <Routes>
-            <Route 
-              path="/user"
-              element={user ? <User /> : <Navigate to="/user/login" />}
+            <Route
+              path='/user'
+              element={user ? <User /> : <Navigate to='/user/login' />}
             />
-            <Route 
-              path="/user/all"
-              element={user ? <Users /> : <Navigate to="/user/login" />}
+            <Route
+              path='/user/all'
+              element={user ? <Users /> : <Navigate to='/user/login' />}
             />
-            <Route 
-              path="/user/login"
-              element={!user? <Login /> : <Navigate to="/user" />}
+            <Route
+              path='/user/login'
+              element={!user ? <Login /> : <Navigate to='/user' />}
             />
-            <Route 
-              path="/user/signup"
-              element={!user ? <Signup /> : <Navigate to="/user" />}
+            <Route
+              path='/user/signup'
+              element={!user ? <Signup /> : <Navigate to='/user' />}
             />
           </Routes>
         </div>
       </BrowserRouter>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

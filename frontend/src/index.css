@@ -9,7 +9,7 @@
 body {
   background: #f7f7f7;
   margin: 0;
-  font-family: "Poppins";
+  font-family: 'Poppins';
 }
 header {
   background: #fff;
@@ -26,7 +26,7 @@ header a {
   color: #333;
   text-decoration: none;
 }
-.pages{
+.pages {
   max-width: 1300px;
   padding: 20px;
   margin: 0 auto;
@@ -43,7 +43,7 @@ header a {
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
 }
 .user-details h4 {
   margin: 0 0 10px 0;
@@ -66,8 +66,8 @@ header a {
   color: #333;
 }
 
-
-label, input {
+label,
+input {
   display: block;
 }
 input {
@@ -79,12 +79,13 @@ input {
   border-radius: 4px;
   box-sizing: border-box;
 }
-form button, .availabilitybutton {
+form button,
+.availabilitybutton {
   background: var(--primary);
   border: 0;
   color: #fff;
   padding: 10px;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   border-radius: 4px;
   cursor: pointer;
   width: 35%;
@@ -101,7 +102,6 @@ input.error {
   border: 1px solid var(--error);
 }
 
-
 nav {
   display: flex;
   align-items: center;
@@ -116,14 +116,16 @@ nav button {
   border: 2px solid var(--primary);
   padding: 6px 10px;
   border-radius: 4px;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   cursor: pointer;
   font-size: 1em;
-  margin-left:10px;
+  margin-left: 10px;
 }
 
 /* auth forms */
-form.signup, form.login, form.availability_form {
+form.signup,
+form.login,
+form.availability_form {
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
@@ -131,5 +133,15 @@ form.signup, form.login, form.availability_form {
   border-radius: 4px;
 }
 
-table{ width:100%; border-collapse: collapse; margin-bottom: 40px; table-layout: fixed; background-color: white;}
-td{height: 80px; text-align: center; border: 1px solid #1aac83;}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+  table-layout: fixed;
+  background-color: white;
+}
+td {
+  height: 80px;
+  text-align: center;
+  border: 1px solid #1aac83;
+}
