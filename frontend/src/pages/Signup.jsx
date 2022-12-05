@@ -27,7 +27,9 @@ function Signup() {
       <label>User Role:</label>
       <input type='text' onChange={(e) => setUserRole(e.target.value)} value={userRole} />
 
-      <button disabled={isLoading}>Sign up</button>
+      <button disabled={isLoading} type='submit'>
+        Sign up
+      </button>
       {error && <div className='error'>{error}</div>}
     </form>
   );

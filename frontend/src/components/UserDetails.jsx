@@ -4,7 +4,10 @@ function UserDetails({ user }) {
       <h4>{user.name}</h4>
       <p>{user.email}</p>
       <p>
-        <strong>Availabilty Hours : </strong> {user.startTime} - {user.endTime}
+        <strong>Availabilty Hours : </strong>
+        {user.startTime}
+        -
+        {user.endTime}
       </p>
       <p>
         <strong>Role : </strong>

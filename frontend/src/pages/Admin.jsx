@@ -9,7 +9,9 @@ function Admin() {
       <AvailabilityTable />
       <div style={{ width: '100%', textAlign: 'center' }}>
         <Link to='/user/all'>
-          <button className='availabilitybutton'>Check Other Users Availability</button>
+          <button className='availabilitybutton' type='submit'>
+            Check Other Users Availability
+          </button>
         </Link>
       </div>
     </div>
