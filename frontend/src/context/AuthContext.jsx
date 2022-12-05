@@ -28,5 +28,7 @@ export function AuthContextProvider({ children }) {
 
   console.log('AuthContext state:', state);
 
-  return <AuthContext.Provider value={{ ...state, dispatch }}>{children}</AuthContext.Provider>;
+  const stateAndDispatch = useMemo(() => ({ ...state, dispatch }), []);
+
+  return <AuthContext.Provider value={stateAndDispatch}>{children}</AuthContext.Provider>;
 }

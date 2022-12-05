@@ -20,7 +20,7 @@
         "jsx-quotes": [2, "prefer-single"],
         "max-lines": ["error", { "max": 200, "skipBlankLines": true }],
         "no-alert": 0,
-        "no-console": "warn",
+        "no-console": "off",
         "no-debugger": "warn",
         "no-duplicate-imports": "off",
         "no-magic-numbers": ["error", { "ignore": [-1, 0, 1, 2, 100] }],
@@ -32,6 +32,7 @@
         "react/no-array-index-key": "error",
         "react/react-in-jsx-scope": 0,
         "jsx-a11y/label-has-associated-control": 0,
-        "react/prop-types": "off"
+        "react/prop-types": "off",
+        "no-shadow": "off"
     }
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 // import { useAuthContext } from './useAuthContext'
 
-export const useSetAvailability = () => {
+const useSetAvailability = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   // const { dispatch } = useAuthContext()
@@ -28,3 +28,5 @@ export const useSetAvailability = () => {
 
   return { setAvailability, isLoading, error };
 };
+
+export default useSetAvailability;

@@ -1,6 +1,6 @@
 import Developer from './Developer';
 import Admin from './Admin';
-import { useAuthContext } from '../hooks/useAuthContext';
+import useAuthContext from '../hooks/useAuthContext';
 
 function User() {
   const { user } = useAuthContext();

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSetAvailability } from '../hooks/useSetAvailability';
+import useSetAvailability from '../hooks/useSetAvailability';
 
 function AvailabilityForm() {
   const [startTime, setStartTime] = useState('');

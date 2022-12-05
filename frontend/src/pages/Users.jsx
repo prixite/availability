@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import UserDetails from '../components/UserDetails';
-import { useAuthContext } from '../hooks/useAuthContext';
+import useAuthContext from '../hooks/useAuthContext';
 
 function Users() {
   const [users, setUsers] = useState(null);
@@ -26,7 +26,7 @@ function Users() {
   return (
     <div className='home'>
       <div className='users'>
-        {users && users.map((user) => <UserDetails key={user._id} user={user} />)}
+        {users && users.map((user) => <UserDetails key={user.id} user={user} />)}
       </div>
     </div>
   );
