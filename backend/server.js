@@ -15,7 +15,7 @@ const slackInteractions = createMessageAdapter(process.env.SLACK_SIGNING_SECRET)
 // Both Apps
 const expressapp = express()
 const slackapp = new App({
-    token: "xoxb-4293173167665-4277863248693-asASsd2lLhiki6mzxAR0gsPY",
+    token: process.env.SLACK_BOT_TOKEN,
     signingSecret: process.env.SLACK_SIGNING_SECRET
   });
 
@@ -45,7 +45,7 @@ const requestTime = new Date();
 async function publishMessage(channelId) {
     try {
       const result = await slackapp.client.chat.postMessage({
-        token: "xoxb-4293173167665-4277863248693-asASsd2lLhiki6mzxAR0gsPY",
+        token: process.env.SLACK_BOT_TOKEN,
         channel: channelId,
         text: "fallback text message",
         blocks: [
@@ -100,7 +100,7 @@ mongoose.connect(process.env.MONGO_URI)
   let userChannelIds = [];
 
   const result = await slackapp.client.users.list({
-    token: process.env.SLACK_BOT_TOKEN
+    token: process.env.SLACK_USER_TOKEN
   });
 
   result.members.forEach( (member) => { 
@@ -117,7 +117,7 @@ mongoose.connect(process.env.MONGO_URI)
         let allUsers = [];
 
         const result = await slackapp.client.users.list({
-            token: process.env.SLACK_BOT_TOKEN
+            token: process.env.SLACK_USER_TOKEN
           });
     
            const dbusers = await User.find({})
@@ -193,7 +193,7 @@ var something = (function() {
         if (!executed) {
             executed = true;
             const result = await slackapp.client.users.list({
-                token: process.env.SLACK_BOT_TOKEN
+                token: process.env.SLACK_USER_TOKEN
               });
             
               result.members.forEach( async (member) => { 
