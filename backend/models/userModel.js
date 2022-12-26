@@ -29,6 +29,15 @@ const userSchema = new Schema({
     },
     endTime:{
         type: String, default: ''
+    },
+    weekAvailableHours:{
+      type: Number, default: 0
+    },
+    monthAvailableHours:{
+      type: Number, default: 0
+    },
+    lastMessage:{
+      type:String, default: ''
     }
 }, {timestamps: true})
 

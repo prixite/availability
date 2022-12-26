@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import AvailabilityForm from '../components/AvailabilityForm';
-import AvailabilityTable from '../components/AvailabilityTable';
+import HoursDetails from '../components/HourDetails';
 
-function Admin() {
+function Admin({ user }) {
   return (
     <div>
       <AvailabilityForm />
-      <AvailabilityTable />
+      <HoursDetails user={user} />
       <div style={{ width: '100%', textAlign: 'center' }}>
         <Link to='/user/all'>
           <button className='availabilitybutton' type='submit'>

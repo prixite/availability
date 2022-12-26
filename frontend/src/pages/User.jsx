@@ -5,9 +5,9 @@ import useAuthContext from '../hooks/useAuthContext';
 function User() {
   const { user } = useAuthContext();
   if (user.userRole === 'Developer') {
-    return <Developer />;
+    return <Developer user={user} />;
   }
-  return <Admin />;
+  return <Admin user={user} />;
 }
 
 export default User;

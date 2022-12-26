@@ -6,14 +6,14 @@ const useSetAvailability = () => {
   const [isLoading, setIsLoading] = useState(null);
   // const { dispatch } = useAuthContext()
 
-  const setAvailability = async (userId, startTime, endTime) => {
+  const setAvailability = async (user_id, startTime, endTime) => {// eslint-disable-line
     setIsLoading(true);
     setError(null);
 
     const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId, startTime, endTime }),
+      body: JSON.stringify({ user_id, startTime, endTime }),// eslint-disable-line
     });
     const json = await response.json();
 

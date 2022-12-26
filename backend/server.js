@@ -108,7 +108,7 @@ mongoose.connect(process.env.MONGO_URI)
     userChannelIds.push(member.id)
 });
 
-        console.log('Connected to DB and listening on port', process.env.PORT)
+    console.log('Connected to DB and listening on port', process.env.PORT)
 
     //await something()
 
@@ -116,13 +116,13 @@ mongoose.connect(process.env.MONGO_URI)
     
         let allUsers = [];
 
-        const result = await slackapp.client.users.list({
+        const result1 = await slackapp.client.users.list({
             token: process.env.SLACK_USER_TOKEN
           });
     
            const dbusers = await User.find({})
 
-           result.members.forEach( (member) => { 
+           result1.members.forEach( (member) => { 
             if(member.deleted === false && member.is_bot === false && member.is_email_confirmed === true)
             allUsers.push({
               "Name": member.real_name,
@@ -138,7 +138,7 @@ mongoose.connect(process.env.MONGO_URI)
 
         if (newUsersNo > 0) {
             newusers.forEach( async (member) => { 
-                //await User.signup(member.real_name, member.profile.email, "Password@123", member.is_admin ? 'Admin' : 'Developer' )
+                await User.signup(member.real_name, member.profile.email, "Password@123", member.is_admin ? 'Admin' : 'Developer' )
                 await User.signup(member.Name, member.Email, member.Password, member.userRole)
                 console.log('User has been added to db')
             });
@@ -148,8 +148,28 @@ mongoose.connect(process.env.MONGO_URI)
 
     cron.schedule('*/60 * * * *', async () => {
 
+      const newUserIds = []
+
+      dbusers.map((user) => {
+
+        const currentHour = new Date().getHours();
+
+          if (user && user.startTime && user.endTime) {
+            const startTime = user.startTime.split(':')[0];
+            const endTime = user.endTime.split(':')[0];
+            if (currentHour >= startTime && currentHour <= endTime) {
+              console.log('Yes, the user is between startTime and endTime');
+              newUserIds.push(user._id)
+            } else {
+              console.log('No, the user is not between startTime and endTime');
+            }
+          } else {
+            console.log('No startTime and endTime for this user');
+          }
+      })
+
         var timestamps = [];
-        for(let i=0; i<userChannelIds.length; i++){
+        for(let i=0; i<newUserIds.length; i++){
             timestamps.push(between(1, 60))
         }    
 
@@ -160,7 +180,14 @@ mongoose.connect(process.env.MONGO_URI)
             const reqtime = await publishMessage(userChannelIds[timestamps.indexOf(count)]);
             slackInteractions.action({ actionId: 'plain_text_input-action' }, (payload, respond) => {
             const responseTime = new Date();
+
             console.log(`The user ${payload.user.username} is working on ${payload.actions[0].value} This hour will be marked: ${diff_minutes(responseTime,reqtime)<10?"Green":"Red"}`);
+
+            if (diff_minutes(responseTime,reqtime)<10){
+            User.weekAvailableHours = User.weekAvailableHours+1;
+            User.monthAvailableHours = User.monthAvailableHours+1;}
+
+            User.lastMessage = payload.actions[0].value;
             
             respond({
               text: 'Thanks for letting us know'

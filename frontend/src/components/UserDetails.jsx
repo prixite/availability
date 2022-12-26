@@ -13,6 +13,18 @@ function UserDetails({ user }) {
         <strong>Role : </strong>
         {user.userRole}
       </p>
+      <p>
+        <strong>Weekly Hours : </strong>
+        {user.weekAvailableHours}
+      </p>
+      <p>
+        <strong>Monthly Hours : </strong>
+        {user.monthAvailableHours}
+      </p>
+      <p>
+        <strong> Last Message :</strong>
+        {user.lastMessage}
+      </p>
     </div>
   );
 }

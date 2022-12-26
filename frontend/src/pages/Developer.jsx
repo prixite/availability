@@ -1,11 +1,11 @@
 import AvailabilityForm from '../components/AvailabilityForm';
-import AvailabilityTable from '../components/AvailabilityTable';
+import HoursDetails from '../components/HourDetails';
 
-function Developer() {
+function Developer({ user }) {
   return (
     <div>
       <AvailabilityForm />
-      <AvailabilityTable />
+      <HoursDetails user={user} />
     </div>
   );
 }
