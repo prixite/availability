@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 services:
   backend:
     container_name: new-container
@@ -23,7 +23,7 @@ services:
       - "127.0.0.1:3000:3000"
     volumes:
       - static_volume:/usr/frontend/build
-      
+
   mongo:
     container_name: mongo
     restart: always
@@ -33,6 +33,5 @@ services:
     expose:
       - 27017
 
-  
 volumes:
   static_volume:

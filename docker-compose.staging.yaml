@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 services:
   backend:
     container_name: new-container
@@ -21,13 +21,13 @@ services:
       dockerfile: frontend/Dockerfile
     volumes:
       - static_volume:/usr/frontend/build
-      
+
   mongo:
     container_name: mongo
     restart: always
     image: mongo:latest
     volumes:
       - ./mongo:/data/db
-  
+
 volumes:
   static_volume:

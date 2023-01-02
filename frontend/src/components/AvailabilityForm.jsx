@@ -9,7 +9,7 @@ function AvailabilityForm() {
     e.preventDefault();
 
     const user = JSON.parse(localStorage.getItem('user'));
-    const user_id = user.user_id // eslint-disable-line
+    const user_id = user.user_id; // eslint-disable-line
 
     if (startTime !== null && endTime !== null) {
       const starthour = startTime.split(':');
@@ -20,7 +20,7 @@ function AvailabilityForm() {
         alert('Your Availability Hours should be 9 hours');
       } else {
         await setAvailability(user_id, startTime, endTime); // eslint-disable-line
-        alert(`Your availability has been set from ${startTime} to ${endTime}`);// eslint-disable-line
+        alert(`Your availability has been set from ${startTime} to ${endTime}`); // eslint-disable-line
       }
     }
   };
@@ -47,9 +47,10 @@ function AvailabilityForm() {
         value={endTime}
       />
 
-      <button type='submit' disabled={isLoading}>Set Your Availability</button>
+      <button type='submit' disabled={isLoading}>
+        Set Your Availability
+      </button>
       {error && <div className='error'>{error}</div>}
-
     </form>
   );
 }
