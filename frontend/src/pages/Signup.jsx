@@ -24,11 +24,6 @@ function Signup() {
       <input type='email' onChange={(e) => setEmail(e.target.value)} value={email} />
       <label>Password:</label>
       <input type='password' onChange={(e) => setPassword(e.target.value)} value={password} />
-      <label>User Role:</label>
-      <select style={{ width: "100%" }} onChange={(e) => setUserRole(e.target.value)} value={userRole}>
-        <option value='Admin'>Admin</option>
-        <option value='Developer'>Developer</option>
-      </select>
 
       <button disabled={isLoading} type='submit'>
         Sign up

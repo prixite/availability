@@ -21,8 +21,7 @@ const userSchema = new Schema({
         minlength: 6
     },
     userRole:{
-        type: String,
-        required: true
+        type: String, default: 'Developer'
     },
     startTime:{
         type:String, default: ''
@@ -43,7 +42,7 @@ const userSchema = new Schema({
 
 userSchema.statics.signup = async function(name, email, password, userRole, startTime, endTime) {
 
-    if (!name || !email || !password || !userRole) {
+    if (!name || !email || !password) {
         throw Error('All fields must be filled')
       }
       if (!validator.isEmail(email)) {
